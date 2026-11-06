@@ -1,0 +1,28 @@
+{
+  "name": "smart-hospital-backend",
+  "version": "1.0.0",
+  "description": "Smart Hospital Appointment Management System REST API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "hospital",
+    "appointment-system",
+    "queue-management",
+    "express",
+    "supabase"
+  ],
+  "author": "MRECW",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3"
+  }
+}

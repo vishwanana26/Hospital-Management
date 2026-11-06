@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Hospital Appointment Management System | MRECW</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
+</head>
+<body>
+
+  <!-- ============================================================== -->
+  <!-- DEDICATED INITIAL AUTHENTICATION SCREEN (LOGIN / SIGN UP)      -->
+  <!-- ============================================================== -->
+  <section id="authScreen" class="auth-screen">
+    <div class="auth-card-container">
+      
+      <!-- Left Hero Panel -->
+      <div class="auth-left-hero">
+        <div>
+          <div class="auth-brand-header">
+            <div class="auth-brand-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <div>
+              <h2 style="font-size: 1.25rem; font-weight: 800; line-height: 1.1; color: #ffffff;">MRECW Smart Health</h2>
+              <span style="font-size: 0.72rem; letter-spacing: 0.5px; opacity: 0.9;">DIGITAL HOSPITAL PLATFORM</span>
+            </div>
+          </div>
+
+          <h3 class="auth-hero-title">Intelligent OPD Queue &amp; Appointment System</h3>
+          <p class="auth-hero-subtitle">
+            Say goodbye to endless hospital waiting lines. Search verified medical specialists, reserve confirmed consultation slots, track your queue turn in real time, and access digital passes.
+          </p>
+
+          <ul class="auth-feature-list">
+            <li class="auth-feature-item">
+              <span class="auth-feature-icon">✓</span>
+              <span><strong>Atomic Slot Protection:</strong> High-performance lock eliminates double-booking conflicts.</span>
+            </li>
+            <li class="auth-feature-item">
+              <span class="auth-feature-icon">⏱</span>
+              <span><strong>Live Waiting Room:</strong> Real-time token tracking with &ldquo;Turn Approaching&rdquo; alerts.</span>
+            </li>
+            <li class="auth-feature-item">
+              <span class="auth-feature-icon">📱</span>
+              <span><strong>Digital OPD Pass:</strong> Downloadable and printable token slips with contactless QR codes.</span>
+            </li>
+            <li class="auth-feature-item">
+              <span class="auth-feature-icon">🛡️</span>
+              <span><strong>Dedicated Portals:</strong> Customized dashboards for Patients, Doctors, and Administrators.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="auth-hospital-badge">
+          <div>
+            <span class="pulse-dot"></span>
+            <strong>OPD Live:</strong> 08:00 AM &ndash; 08:00 PM
+          </div>
+          <div>
+            Emergency: <strong>108</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Form Panel -->
+      <div class="auth-right-panel">
+        
+        <!-- Tab Selector: Sign In vs Sign Up -->
+        <div class="auth-tabs-bar">
+          <button type="button" class="auth-tab-pill active" id="authTabLogin">Sign In (Login)</button>
+          <button type="button" class="auth-tab-pill" id="authTabRegister">Sign Up (Register)</button>
+        </div>
+
+        <!-- 1. SIGN IN (LOGIN) FORM -->
+        <div id="authLoginPanel">
+          <h2 class="auth-form-title">Welcome Back</h2>
+          <p class="auth-form-desc">Sign in with your email and password to access your healthcare portal.</p>
+
+          <form id="authMainLoginForm">
+            <div class="form-group">
+              <label for="authLoginEmail">Email Address</label>
+              <div class="input-with-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <input type="email" id="authLoginEmail" placeholder="e.g. john.doe@gmail.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label for="authLoginPassword">Password</label>
+                <span style="font-size: 0.72rem; color: var(--text-light);">Default demo password: <code>password123</code></span>
+              </div>
+              <div class="input-with-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <input type="password" id="authLoginPassword" placeholder="••••••••" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 8px;" id="btnSubmitLogin">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+              Sign In to Portal
+            </button>
+          </form>
+
+          <div style="text-align: center; margin-top: 14px; font-size: 0.85rem; color: var(--text-muted);">
+            Don&rsquo;t have an account? <a href="#" id="linkSwitchToRegister" style="color: var(--primary); font-weight: 700; text-decoration: none;">Create an account (Sign Up)</a>
+          </div>
+        </div>
+
+        <!-- 2. SIGN UP (REGISTRATION) FORM -->
+        <div id="authRegisterPanel" style="display: none;">
+          <h2 class="auth-form-title">Create Account</h2>
+          <p class="auth-form-desc">Register as a new patient or healthcare professional.</p>
+
+          <form id="authMainRegisterForm">
+            
+            <!-- Role Selection -->
+            <div class="form-group">
+              <label>Select Your Account Type</label>
+              <div class="auth-role-selector">
+                <label class="auth-role-option selected" id="optRolePatient">
+                  <input type="radio" name="regRole" value="patient" checked style="display: none;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Patient
+                </label>
+                <label class="auth-role-option" id="optRoleDoctor">
+                  <input type="radio" name="regRole" value="doctor" style="display: none;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>
+                  Doctor
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="authRegName">Full Legal Name</label>
+              <input type="text" id="authRegName" class="form-control" placeholder="e.g. John Doe or Dr. Sarah" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="form-group">
+                <label for="authRegEmail">Email Address</label>
+                <input type="email" id="authRegEmail" class="form-control" placeholder="name@email.com" required>
+              </div>
+              <div class="form-group">
+                <label for="authRegPhone">Phone Number</label>
+                <input type="tel" id="authRegPhone" class="form-control" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="authRegPassword">Password</label>
+              <input type="password" id="authRegPassword" class="form-control" placeholder="Create a secure password" required minlength="6">
+            </div>
+
+            <!-- Patient-Specific Fields -->
+            <div id="patientExtraFields">
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                <div class="form-group">
+                  <label for="authRegDob">Date of Birth</label>
+                  <input type="date" id="authRegDob" class="form-control" value="1995-06-15">
+                </div>
+                <div class="form-group">
+                  <label for="authRegGender">Gender</label>
+                  <select id="authRegGender" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="authRegBlood">Blood Group</label>
+                  <select id="authRegBlood" class="form-control">
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Doctor-Specific Fields -->
+            <div id="doctorExtraFields" style="display: none;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="form-group">
+                  <label for="authRegSpec">Specialization</label>
+                  <input type="text" id="authRegSpec" class="form-control" placeholder="e.g. Cardiologist">
+                </div>
+                <div class="form-group">
+                  <label for="authRegDept">Department</label>
+                  <select id="authRegDept" class="form-control">
+                    <!-- Populated dynamically -->
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 6px;" id="btnSubmitRegister">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" x2="20" y1="8" y2="14"/><line x1="23" x2="17" y1="11" y2="11"/></svg>
+              Complete Registration
+            </button>
+          </form>
+
+          <div style="text-align: center; margin-top: 14px; font-size: 0.85rem; color: var(--text-muted);">
+            Already have an account? <a href="#" id="linkSwitchToLogin" style="color: var(--primary); font-weight: 700; text-decoration: none;">Sign In</a>
+          </div>
+        </div>
+
+        <!-- 3. QUICK 1-CLICK DEMO ACCOUNTS -->
+        <div class="auth-divider">
+          <span>Or 1-Click Instant Demo Access</span>
+        </div>
+
+        <div class="auth-quick-demo-box">
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-align: center; font-weight: 600;">
+            Test the system instantly without typing credentials:
+          </div>
+          <div class="auth-demo-grid">
+            <button type="button" class="auth-demo-btn" data-demo="patient">
+              <span>👤 Patient</span>
+              <small>John Doe (Token #1)</small>
+            </button>
+            <button type="button" class="auth-demo-btn" data-demo="doctor">
+              <span>🩺 Doctor</span>
+              <small>Dr. Sarah Smith</small>
+            </button>
+            <button type="button" class="auth-demo-btn" data-demo="admin">
+              <span>🛡️ Admin</span>
+              <small>Director Controls</small>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- MAIN HOSPITAL APPLICATION (SHOWN WHEN AUTHENTICATED)           -->
+  <!-- ============================================================== -->
+  <div id="mainAppView" class="main-app-wrapper" style="display: none;">
+
+    <!-- Top Emergency & Status Announcement Strip -->
+    <aside class="top-strip" aria-label="Hospital Status">
+      <div class="strip-badges">
+        <span><span class="pulse-dot"></span><strong>OPD Status:</strong> Active &amp; Live (08:00 AM &ndash; 08:00 PM)</span>
+        <span>|</span>
+        <span><strong>Emergency Trauma:</strong> <a href="tel:108">108</a> / +91 40 2379 2999</span>
+      </div>
+      <div>
+        <span>Campus: MRECW Maisammaguda, Secunderabad, Telangana</span>
+      </div>
+    </aside>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-container">
+        
+        <!-- Brand Logo -->
+        <div class="brand" id="brandLogo" role="button" tabindex="0">
+          <div class="brand-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1>MRECW Smart Health</h1>
+            <span>APPOINTMENT &amp; QUEUE MANAGEMENT SYSTEM</span>
+          </div>
+        </div>
+
+        <!-- Quick Role Switcher (Available when authenticated) -->
+        <div class="role-switcher-bar">
+          <span class="role-switcher-label">Switch Role:</span>
+          <button class="role-pill active" id="pillPatient" data-role="patient">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Patient
+          </button>
+          <button class="role-pill" id="pillDoctor" data-role="doctor">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>
+            Doctor
+          </button>
+          <button class="role-pill" id="pillAdmin" data-role="admin">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Admin
+          </button>
+        </div>
+
+        <!-- Nav Actions (Notifications & User Profile) -->
+        <div class="nav-actions">
+          <!-- Notification Dropdown -->
+          <div class="notification-wrapper">
+            <button class="icon-btn" id="btnNotifications" title="Notifications">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span class="badge-count" id="notifBadge">0</span>
+            </button>
+            
+            <div class="dropdown-panel" id="notificationsDropdown">
+              <div class="dropdown-header">
+                <h4>System Notifications</h4>
+                <button id="btnMarkAllRead">Mark all read</button>
+              </div>
+              <ul class="notification-list" id="notificationList">
+                <li class="notification-item">Loading notifications...</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- User Profile Pill -->
+          <div class="user-profile-badge" id="userProfileChip">
+            <img id="navAvatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" alt="Profile Avatar">
+            <div class="user-profile-info">
+              <span class="name" id="navUserName">John Doe</span>
+              <span class="role-tag" id="navUserRole">PATIENT</span>
+            </div>
+          </div>
+
+          <!-- Logout Button -->
+          <button class="btn btn-danger btn-sm" id="btnLogout" title="Sign out of system">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+
+    <!-- ============================================================== -->
+    <!-- 1. PATIENT PORTAL INTERFACE                                     -->
+    <!-- ============================================================== -->
+    <section class="portal-view active" id="patientPortal">
+      
+      <!-- Patient Hero Banner -->
+      <div class="portal-hero">
+        <div>
+          <h2 id="patientGreeting">Hello, John Doe 👋</h2>
+          <p>Book doctor appointments in seconds, check live OPD availability, track your turn in the waiting queue, and download your digital confirmation pass.</p>
+        </div>
+        <div class="hero-stats-row">
+          <div class="hero-stat-card">
+            <div class="value" id="patientUpcomingCount">0</div>
+            <div class="label">Upcoming Visits</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="value" id="patientQueueToken">#--</div>
+            <div class="label">Today's Token</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs inside Patient Portal -->
+      <nav class="sub-tabs-nav" aria-label="Patient portal sub-tabs">
+        <button class="sub-tab-btn active" data-target="patientBookTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Search Doctors &amp; Book
+        </button>
+        <button class="sub-tab-btn" data-target="patientQueueTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Live Queue Tracker
+        </button>
+        <button class="sub-tab-btn" data-target="patientHistoryTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          My Appointments
+        </button>
+      </nav>
+
+      <!-- TAB 1: Live Queue Tracker Card -->
+      <div class="patient-sub-content" id="patientQueueTab" style="display: none;">
+        <div class="queue-tracker-card" id="patientQueueCard">
+          <div class="queue-header">
+            <div class="queue-header-left">
+              <span class="queue-pulse-badge"><span class="pulse-dot"></span> Live Waiting Room</span>
+              <h3 id="queueDoctorName">Dr. Sarah Smith (Cardiology)</h3>
+            </div>
+            <span class="meta-badge" id="queueRoomBadge">Room 201 (2nd Floor)</span>
+          </div>
+
+          <!-- Queue Metric Boxes -->
+          <div class="queue-grid">
+            <div class="queue-metric-box highlight">
+              <div class="metric-title">Now Serving In OPD</div>
+              <div class="metric-num" id="queueNowServingToken">#1</div>
+            </div>
+            <div class="queue-metric-box">
+              <div class="metric-title">Your Assigned Token</div>
+              <div class="metric-num" id="queueMyToken">#2</div>
+            </div>
+            <div class="queue-metric-box alert">
+              <div class="metric-title">Patients Ahead of You</div>
+              <div class="metric-num" id="queueAheadCount">1</div>
+            </div>
+            <div class="queue-metric-box">
+              <div class="metric-title">Estimated Wait Time</div>
+              <div class="metric-num" id="queueEstWait">~15 m</div>
+            </div>
+          </div>
+
+          <!-- Turn Approaching / Now Serving Alert Banner -->
+          <div class="queue-alert-banner warning" id="queueAlertBanner">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+            <div id="queueAlertText">
+              <strong>Turn Approaching!</strong> Only 1 patient ahead of you. Please proceed to the 2nd Floor OPD waiting lounge.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: Search Doctors & Book Slot -->
+      <div class="patient-sub-content" id="patientBookTab">
+        
+        <!-- Search and Filter Bar -->
+        <div class="search-filter-card">
+          <div class="search-filter-row">
+            <div class="input-with-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" id="doctorSearchInput" placeholder="Search doctor by name, disease, or medical specialty...">
+            </div>
+
+            <select class="filter-select" id="deptFilterSelect">
+              <option value="">All Departments</option>
+              <!-- Populated dynamically -->
+            </select>
+
+            <select class="filter-select" id="dayFilterSelect">
+              <option value="">Any Available Day</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+            </select>
+          </div>
+
+          <!-- Quick Department Chips -->
+          <div class="dept-chips-row" id="deptChipsRow">
+            <button class="dept-chip active" data-dept="">All Specialties</button>
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Doctors Directory Grid -->
+        <div class="doctors-grid" id="doctorsGrid">
+          <!-- Injected via JS -->
+        </div>
+
+      </div>
+
+      <!-- TAB 3: My Appointments -->
+      <div class="patient-sub-content" id="patientHistoryTab" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--dark);">My Scheduled Appointments</h3>
+          <span class="meta-badge" id="myAppointmentsCount">0 total records</span>
+        </div>
+        <div class="appointments-grid" id="patientAppointmentsList">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 2. DOCTOR PORTAL INTERFACE                                      -->
+    <!-- ============================================================== -->
+    <section class="portal-view" id="doctorPortal">
+      
+      <!-- Doctor Hero Banner -->
+      <div class="portal-hero" style="background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #0369a1 100%);">
+        <div>
+          <h2 id="doctorHeroName">Dr. Sarah Smith 🩺</h2>
+          <p id="doctorHeroSub">Senior Interventional Cardiologist &bull; Department of Cardiology &bull; Room 201 (2nd Floor)</p>
+        </div>
+        <div class="hero-stats-row">
+          <div class="hero-stat-card">
+            <div class="value" id="docStatsToday">0</div>
+            <div class="label">Today's Visits</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="value" id="docStatsWaiting">0</div>
+            <div class="label">In Queue</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="value" id="docStatsCompleted">0</div>
+            <div class="label">Completed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor Sub Navigation -->
+      <nav class="sub-tabs-nav" aria-label="Doctor portal sub-tabs">
+        <button class="sub-tab-btn active" data-target="docQueueConsoleTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Live OPD Queue Console
+        </button>
+        <button class="sub-tab-btn" data-target="docScheduleTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          Today's Appointments
+        </button>
+        <button class="sub-tab-btn" data-target="docSettingsTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Manage Time Slots &amp; Availability
+        </button>
+      </nav>
+
+      <!-- Doctor TAB 1: Queue Console -->
+      <div class="doc-sub-content" id="docQueueConsoleTab">
+        <div class="doctor-console-grid">
+          
+          <!-- Left: Active Consultation Card -->
+          <div class="active-consult-panel">
+            <div class="active-consult-header">
+              <h3>
+                <span class="pulse-dot"></span>
+                Now In Consultation Room
+              </h3>
+              <span class="status-pill status-in_progress" id="docCurrentStatusBadge">IN PROGRESS</span>
+            </div>
+
+            <div id="docActiveConsultContent">
+              <div class="patient-info-box">
+                <div class="patient-info-row">
+                  <span class="label">Token Number:</span>
+                  <span class="val" id="docActiveToken" style="font-size: 1.25rem; color: var(--primary);">#1</span>
+                </div>
+                <div class="patient-info-row">
+                  <span class="label">Patient Name:</span>
+                  <span class="val" id="docActivePatientName">John Doe</span>
+                </div>
+                <div class="patient-info-row">
+                  <span class="label">Booking Reference:</span>
+                  <span class="val" id="docActiveBookingRef">MREC-2026-101</span>
+                </div>
+                <div class="patient-info-row">
+                  <span class="label">Chief Complaint:</span>
+                  <span class="val" id="docActiveReason">Routine heart checkup</span>
+                </div>
+                <div class="patient-info-row">
+                  <span class="label">Reported Symptoms:</span>
+                  <span class="val" id="docActiveSymptoms">Occasional palpitation during workout</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="doctorNotesInput">Doctor Clinical Notes / Prescription:</label>
+                <textarea id="doctorNotesInput" class="notes-textarea" placeholder="Enter diagnosis, clinical observations, and medications..."></textarea>
+              </div>
+
+              <div style="display: flex; gap: 12px;">
+                <button class="btn btn-success btn-lg" id="btnCompleteConsult" style="flex: 1;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  Complete Consultation
+                </button>
+                <button class="btn btn-primary btn-lg" id="btnCallNextToken" style="flex: 1;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  Call Next Patient
+                </button>
+              </div>
+            </div>
+
+            <div id="docNoActiveConsult" style="display: none; text-align: center; padding: 40px 20px;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-light)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <h4 style="margin: 12px 0 6px;">No Patient In Consultation</h4>
+              <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">Queue is ready. Advance queue to call the next waiting patient into your room.</p>
+              <button class="btn btn-primary btn-lg" id="btnCallNextTokenEmpty">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Call Next Patient
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right: Live Waiting Queue List -->
+          <div style="background: #ffffff; border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 24px; box-shadow: var(--shadow-sm);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+              <h4 style="font-size: 1rem; font-weight: 700; color: var(--dark);">Patients In Waiting Queue</h4>
+              <span class="meta-badge" id="docQueueCountBadge">0 waiting</span>
+            </div>
+            <div id="docWaitingQueueList" style="display: flex; flex-direction: column; gap: 10px; max-height: 480px; overflow-y: auto;">
+              <!-- Injected via JS -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Doctor TAB 2: Schedule Table -->
+      <div class="doc-sub-content" id="docScheduleTab" style="display: none;">
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Time</th>
+                <th>Patient Name</th>
+                <th>Contact</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="doctorAppointmentsTbody">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Doctor TAB 3: Availability Settings -->
+      <div class="doc-sub-content" id="docSettingsTab" style="display: none;">
+        <div style="background: #ffffff; border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 24px; max-width: 650px; box-shadow: var(--shadow-sm);">
+          <h3 style="margin-bottom: 18px; font-size: 1.15rem; color: var(--dark);">Doctor Working Hours &amp; Slots Settings</h3>
+          <form id="doctorAvailabilityForm">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="form-group">
+                <label for="docStartTime">Shift Start Time</label>
+                <input type="text" id="docStartTime" class="form-control" value="09:00 AM">
+              </div>
+              <div class="form-group">
+                <label for="docEndTime">Shift End Time</label>
+                <input type="text" id="docEndTime" class="form-control" value="05:00 PM">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="form-group">
+                <label for="docSlotDuration">Slot Duration (Minutes)</label>
+                <select id="docSlotDuration" class="form-control">
+                  <option value="15">15 Minutes</option>
+                  <option value="20">20 Minutes</option>
+                  <option value="30" selected>30 Minutes</option>
+                  <option value="45">45 Minutes</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="docFee">Consultation Fee (₹)</label>
+                <input type="number" id="docFee" class="form-control" value="800">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="docRoom">Assigned OPD Room</label>
+              <input type="text" id="docRoom" class="form-control" value="Room 201 (2nd Floor)">
+            </div>
+
+            <div class="form-group">
+              <label>Available Consultation Days</label>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px;" id="docDaysCheckboxes">
+                <label><input type="checkbox" value="Monday" checked> Mon</label>
+                <label><input type="checkbox" value="Tuesday" checked> Tue</label>
+                <label><input type="checkbox" value="Wednesday" checked> Wed</label>
+                <label><input type="checkbox" value="Thursday" checked> Thu</label>
+                <label><input type="checkbox" value="Friday" checked> Fri</label>
+                <label><input type="checkbox" value="Saturday"> Sat</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 10px;">Save Schedule Changes</button>
+          </form>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 3. ADMIN PORTAL INTERFACE                                       -->
+    <!-- ============================================================== -->
+    <section class="portal-view" id="adminPortal">
+      
+      <!-- Admin Hero Banner -->
+      <div class="portal-hero" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #0284c7 100%);">
+        <div>
+          <h2>Hospital Operations &amp; Administration</h2>
+          <p>Real-time healthcare analytics, doctor scheduling, department controls, master patient roster, and hospital configuration.</p>
+        </div>
+        <div class="hero-stats-row">
+          <div class="hero-stat-card">
+            <div class="value" id="adminKpiTotalDoctors">6</div>
+            <div class="label">Doctors</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="value" id="adminKpiTotalPatients">3</div>
+            <div class="label">Patients</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="value" id="adminKpiTotalAppts">5</div>
+            <div class="label">Total Bookings</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Sub Navigation -->
+      <nav class="sub-tabs-nav" aria-label="Admin portal sub-tabs">
+        <button class="sub-tab-btn active" data-target="adminAnalyticsTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          Executive Analytics
+        </button>
+        <button class="sub-tab-btn" data-target="adminDoctorsTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>
+          Manage Doctors
+        </button>
+        <button class="sub-tab-btn" data-target="adminDepartmentsTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Departments
+        </button>
+        <button class="sub-tab-btn" data-target="adminAppointmentsTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Master Appointments
+        </button>
+        <button class="sub-tab-btn" data-target="adminSettingsTab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Hospital Settings
+        </button>
+      </nav>
+
+      <!-- Admin TAB 1: Analytics -->
+      <div class="admin-sub-content" id="adminAnalyticsTab">
+        
+        <!-- KPI Cards Grid -->
+        <div class="admin-kpi-grid">
+          <div class="kpi-card">
+            <div>
+              <div class="kpi-num" id="statTodayBookings">3</div>
+              <div class="kpi-label">Today's Appointments</div>
+            </div>
+            <div class="kpi-icon-box kpi-blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div>
+              <div class="kpi-num" id="statActiveQueue">2</div>
+              <div class="kpi-label">Active in Waiting Queue</div>
+            </div>
+            <div class="kpi-icon-box kpi-orange">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div>
+              <div class="kpi-num" id="statCompleted">1</div>
+              <div class="kpi-label">Consultations Completed</div>
+            </div>
+            <div class="kpi-icon-box kpi-green">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div>
+              <div class="kpi-num" id="statDepartments">6</div>
+              <div class="kpi-label">Specialist Clinics</div>
+            </div>
+            <div class="kpi-icon-box kpi-purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Department Booking Load Distribution -->
+        <div class="dept-load-panel">
+          <h3 style="font-size: 1.1rem; color: var(--dark); font-weight: 700; margin-bottom: 16px;">Appointments Load by Department</h3>
+          <div id="deptLoadBars">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Admin TAB 2: Doctors Management -->
+      <div class="admin-sub-content" id="adminDoctorsTab" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--dark);">Medical Staff &amp; Doctors Directory</h3>
+          <button class="btn btn-primary" id="btnOpenAddDoctorModal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+            Add New Doctor
+          </button>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Doctor</th>
+                <th>Department</th>
+                <th>Specialization</th>
+                <th>Experience</th>
+                <th>Fee</th>
+                <th>Room</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="adminDoctorsTbody">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin TAB 3: Departments Management -->
+      <div class="admin-sub-content" id="adminDepartmentsTab" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--dark);">Hospital Medical Departments</h3>
+          <button class="btn btn-primary" id="btnOpenAddDeptModal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+            Add Department
+          </button>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Department</th>
+                <th>Head of Department</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminDeptTbody">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin TAB 4: Master Appointments Monitor -->
+      <div class="admin-sub-content" id="adminAppointmentsTab" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--dark);">Master Appointment Registry</h3>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" id="adminApptSearch" placeholder="Search reference, patient..." class="form-control" style="width: 220px;">
+            <select id="adminApptStatusFilter" class="form-control" style="width: 150px;">
+              <option value="all">All Statuses</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="in_progress">In Progress</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Booking Ref</th>
+                <th>Date &amp; Time</th>
+                <th>Token</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Department</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="adminAppointmentsTbody">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin TAB 5: Hospital Settings -->
+      <div class="admin-sub-content" id="adminSettingsTab" style="display: none;">
+        <div style="background: #ffffff; border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 24px; max-width: 650px; box-shadow: var(--shadow-sm);">
+          <h3 style="margin-bottom: 18px; font-size: 1.15rem; color: var(--dark);">Hospital Working Hours &amp; System Configuration</h3>
+          <form id="adminSettingsForm">
+            <div class="form-group">
+              <label for="setHospitalName">Hospital Name</label>
+              <input type="text" id="setHospitalName" class="form-control" value="MRECW Smart Multi-Speciality Hospital">
+            </div>
+            <div class="form-group">
+              <label for="setHospitalAddress">Campus Location</label>
+              <input type="text" id="setHospitalAddress" class="form-control" value="Maisammaguda, Dhulapally, Secunderabad, Telangana 500100">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="form-group">
+                <label for="setHospitalPhone">Main Reception Line</label>
+                <input type="text" id="setHospitalPhone" class="form-control" value="+91 40 2379 2154">
+              </div>
+              <div class="form-group">
+                <label for="setEmergencyPhone">Emergency Trauma Hotline</label>
+                <input type="text" id="setEmergencyPhone" class="form-control" value="108 / +91 40 2379 2999">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="setWorkingHours">OPD Operating Working Hours</label>
+              <input type="text" id="setWorkingHours" class="form-control" value="08:00 AM - 08:00 PM">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 10px;">Update Hospital Settings</button>
+          </form>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+  </div> <!-- End of mainAppView -->
+
+  <!-- ============================================================== -->
+  <!-- MODALS                                                         -->
+  <!-- ============================================================== -->
+
+  <!-- Modal 1: Book Appointment & Slot Selection -->
+  <div class="modal-backdrop" id="bookingModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="bookingDoctorTitle">Book Appointment</h3>
+        <button class="modal-close-btn" data-close="bookingModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Doctor Info Header -->
+        <div style="display: flex; gap: 14px; align-items: center; background: var(--bg-alt); padding: 14px; border-radius: var(--radius-md); margin-bottom: 18px;">
+          <img id="bookingDoctorAvatar" src="" alt="Doctor" style="width: 54px; height: 54px; border-radius: var(--radius-md); object-fit: cover;">
+          <div>
+            <h4 id="bookingDoctorName" style="font-size: 1rem; color: var(--dark);">Dr. Sarah Smith</h4>
+            <div id="bookingDoctorSpec" style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">Cardiology</div>
+            <div id="bookingDoctorMeta" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Room 201 &bull; ₹800 Fee</div>
+          </div>
+        </div>
+
+        <form id="appointmentBookingForm">
+          <input type="hidden" id="bookingDoctorId">
+          <input type="hidden" id="bookingDeptId">
+
+          <!-- Appointment Date Picker -->
+          <div class="form-group">
+            <label for="bookingDatePicker">Select Consultation Date</label>
+            <input type="date" id="bookingDatePicker" class="form-control" required>
+          </div>
+
+          <!-- Dynamic Slots Grid -->
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label>Select Available Time Slot</label>
+              <span id="slotsCountSummary" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Loading slots...</span>
+            </div>
+            <div class="slots-grid-container" id="slotsGrid">
+              <!-- Dynamically populated -->
+            </div>
+            <input type="hidden" id="selectedSlotTime" required>
+          </div>
+
+          <!-- Reason for visit -->
+          <div class="form-group">
+            <label for="bookingReason">Reason for Consultation</label>
+            <input type="text" id="bookingReason" class="form-control" placeholder="e.g. Chest pain, annual heart checkup, second opinion..." required>
+          </div>
+
+          <!-- Symptoms / Notes -->
+          <div class="form-group">
+            <label for="bookingSymptoms">Symptoms / Medical Notes (Optional)</label>
+            <textarea id="bookingSymptoms" class="form-control" rows="2" placeholder="Mention duration, severity, allergies, or prior medications..."></textarea>
+          </div>
+
+          <div class="modal-footer" style="padding-left: 0; padding-right: 0; margin-bottom: -10px;">
+            <button type="button" class="btn btn-secondary" data-close="bookingModal">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="btnSubmitBooking">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Proceed to Payment &amp; QR Code
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1.5: Payment & Dynamic UPI QR Code Scanner -->
+  <div class="modal-backdrop" id="paymentModal">
+    <div class="modal-box" style="max-width: 530px;">
+      <div class="modal-header">
+        <div>
+          <h3 style="font-size: 1.15rem; font-weight: 800;">OPD Consultation Payment</h3>
+          <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">STEP 2 OF 2 &bull; SCAN QR CODE TO COMPLETE APPOINTMENT</div>
+        </div>
+        <button class="modal-close-btn" data-close="paymentModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- View A: Active Payment Screen with QR Code -->
+        <div id="paymentActiveView">
+          
+          <!-- Order Summary Card -->
+          <div class="payment-order-summary">
+            <div class="payment-summary-row">
+              <span>Consulting Doctor:</span>
+              <strong id="payDocName">Dr. Sarah Smith</strong>
+            </div>
+            <div class="payment-summary-row">
+              <span>Specialty &amp; Room:</span>
+              <span id="payDocDept">Cardiology &bull; Room 201</span>
+            </div>
+            <div class="payment-summary-row">
+              <span>Appointment Slot:</span>
+              <span id="payDateTime">Today &bull; 09:30 AM</span>
+            </div>
+            <div class="payment-summary-row">
+              <span>Doctor Consultation Fee:</span>
+              <span id="payDocFee">₹800.00</span>
+            </div>
+            <div class="payment-summary-row">
+              <span>Hospital OPD Registration &amp; Sanitization:</span>
+              <span>₹50.00</span>
+            </div>
+            <div class="payment-summary-row">
+              <span>Smart Queue Tracker &amp; Digital E-Pass:</span>
+              <span style="color: var(--success); font-weight: 700;">FREE</span>
+            </div>
+            <div class="payment-summary-row total-row">
+              <span>Total Payable Amount:</span>
+              <span id="payTotalAmount" style="color: var(--primary);">₹850.00</span>
+            </div>
+          </div>
+
+          <!-- Interactive QR Code Scanner Box -->
+          <div class="payment-scanner-box">
+            <div class="scanner-laser"></div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #94a3b8; letter-spacing: 0.5px;">INSTANT UPI PAYMENT GATEWAY</span>
+              <div class="countdown-pill">
+                <span class="pulse-dot" style="background-color: #ef4444;"></span>
+                <span id="paymentCountdown">09:59</span>
+              </div>
+            </div>
+
+            <!-- Crisp UPI QR Code SVG -->
+            <div class="payment-qr-frame">
+              <svg width="176" height="176" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="white" rx="10"/>
+                
+                <!-- Corner Finder 1 (Top Left) -->
+                <rect x="15" y="15" width="46" height="46" rx="6" fill="#0f172a"/>
+                <rect x="23" y="23" width="30" height="30" rx="3" fill="white"/>
+                <rect x="29" y="29" width="18" height="18" rx="2" fill="#0284c7"/>
+                
+                <!-- Corner Finder 2 (Top Right) -->
+                <rect x="139" y="15" width="46" height="46" rx="6" fill="#0f172a"/>
+                <rect x="147" y="23" width="30" height="30" rx="3" fill="white"/>
+                <rect x="153" y="29" width="18" height="18" rx="2" fill="#0284c7"/>
+                
+                <!-- Corner Finder 3 (Bottom Left) -->
+                <rect x="15" y="139" width="46" height="46" rx="6" fill="#0f172a"/>
+                <rect x="23" y="147" width="30" height="30" rx="3" fill="white"/>
+                <rect x="29" y="153" width="18" height="18" rx="2" fill="#0284c7"/>
+                
+                <!-- QR Code Pattern Elements -->
+                <rect x="70" y="18" width="12" height="12" fill="#0f172a"/>
+                <rect x="90" y="18" width="12" height="12" fill="#0f172a"/>
+                <rect x="110" y="18" width="12" height="12" fill="#0f172a"/>
+                <rect x="70" y="38" width="20" height="12" fill="#0f172a"/>
+                <rect x="100" y="38" width="14" height="12" fill="#0f172a"/>
+                <rect x="120" y="38" width="10" height="12" fill="#0f172a"/>
+                <rect x="70" y="58" width="12" height="20" fill="#0f172a"/>
+                <rect x="90" y="58" width="18" height="12" fill="#0f172a"/>
+                <rect x="115" y="58" width="14" height="20" fill="#0f172a"/>
+
+                <rect x="18" y="70" width="14" height="12" fill="#0f172a"/>
+                <rect x="40" y="70" width="12" height="12" fill="#0f172a"/>
+                <rect x="18" y="90" width="12" height="18" fill="#0f172a"/>
+                <rect x="38" y="90" width="20" height="12" fill="#0f172a"/>
+                <rect x="18" y="115" width="16" height="12" fill="#0f172a"/>
+                <rect x="42" y="115" width="14" height="14" fill="#0f172a"/>
+
+                <!-- Center Medical Pulse Badge -->
+                <circle cx="100" cy="100" r="22" fill="#0284c7"/>
+                <circle cx="100" cy="100" r="20" fill="white"/>
+                <path d="M100 89v22M89 100h22" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+
+                <!-- Bottom Right Patterns -->
+                <rect x="139" y="70" width="12" height="14" fill="#0f172a"/>
+                <rect x="160" y="70" width="18" height="12" fill="#0f172a"/>
+                <rect x="139" y="90" width="20" height="12" fill="#0f172a"/>
+                <rect x="165" y="90" width="14" height="16" fill="#0f172a"/>
+                <rect x="139" y="115" width="14" height="14" fill="#0f172a"/>
+                <rect x="160" y="115" width="20" height="12" fill="#0f172a"/>
+
+                <rect x="70" y="139" width="14" height="12" fill="#0f172a"/>
+                <rect x="92" y="139" width="18" height="12" fill="#0f172a"/>
+                <rect x="116" y="139" width="12" height="14" fill="#0f172a"/>
+                <rect x="70" y="160" width="20" height="14" fill="#0f172a"/>
+                <rect x="98" y="160" width="12" height="18" fill="#0f172a"/>
+                <rect x="116" y="160" width="14" height="12" fill="#0f172a"/>
+                <rect x="140" y="140" width="16" height="16" fill="#0f172a"/>
+                <rect x="164" y="140" width="14" height="14" fill="#0f172a"/>
+                <rect x="140" y="165" width="14" height="14" fill="#0f172a"/>
+                <rect x="162" y="165" width="18" height="14" fill="#0f172a"/>
+              </svg>
+            </div>
+
+            <div style="font-size: 0.88rem; font-weight: 700; color: #f8fafc; margin-bottom: 2px;">
+              Scan to Pay with Any UPI App
+            </div>
+            <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 600;">
+              UPI ID: <strong>mrecw.hospital@icici</strong>
+            </div>
+
+            <!-- Supported Apps Badges -->
+            <div class="upi-pill-row">
+              <span class="upi-app-badge">Google Pay</span>
+              <span class="upi-app-badge">PhonePe</span>
+              <span class="upi-app-badge">Paytm</span>
+              <span class="upi-app-badge">BHIM UPI</span>
+              <span class="upi-app-badge">Cred</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+            <button type="button" class="btn btn-success btn-lg" id="btnSimulateScanPay" style="width: 100%;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              I Have Scanned &amp; Paid (Simulate Approval)
+            </button>
+
+            <button type="button" class="btn btn-secondary btn-sm" id="btnPayCounter" style="width: 100%;">
+              🏥 Pay In Person at OPD Desk on Arrival
+            </button>
+          </div>
+
+        </div>
+
+        <!-- View B: Payment Success Animation Screen -->
+        <div id="paymentSuccessView" style="display: none;" class="payment-success-card">
+          <div class="payment-check-circle">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 4px;">Payment Received! 🎉</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+            Your consultation payment has been verified by the hospital billing gateway.
+          </p>
+
+          <div class="payment-order-summary" style="text-align: left; margin-bottom: 20px;">
+            <div class="payment-summary-row">
+              <span>Transaction ID:</span>
+              <strong id="paySuccessTxnId" style="color: var(--primary);">TXN-UPI-98472</strong>
+            </div>
+            <div class="payment-summary-row">
+              <span>Amount Paid:</span>
+              <strong id="paySuccessAmount" style="color: #15803d; font-size: 1.1rem;">₹850.00</strong>
+            </div>
+            <div class="payment-summary-row">
+              <span>Payment Method:</span>
+              <span id="paySuccessMethod">UPI QR (mrecw.hospital@icici)</span>
+            </div>
+            <div class="payment-summary-row">
+              <span>Status:</span>
+              <span class="status-pill status-completed">VERIFIED &amp; PAID</span>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-lg" id="btnViewDigitalPassAfterPay" style="width: 100%;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            View Digital Appointment Pass
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Digital Appointment Pass / E-Ticket -->
+  <div class="modal-backdrop" id="passModal">
+    <div class="modal-box" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3>Digital Appointment Pass</h3>
+        <button class="modal-close-btn" data-close="passModal">&times;</button>
+      </div>
+      <div class="modal-body" id="passPrintableArea">
+        
+        <div class="ticket-wrapper">
+          <div class="ticket-header">
+            <div class="ticket-hospital-brand">
+              <div class="brand-icon-box" style="width: 32px; height: 32px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div>
+                <h4>MRECW Smart Health</h4>
+                <div style="font-size: 0.68rem; color: var(--text-muted);">OUTPATIENT DIGITAL PASS</div>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span class="status-pill status-confirmed" id="passStatusPill">CONFIRMED</span>
+            </div>
+          </div>
+
+          <!-- Token Number Spotlight -->
+          <div style="background: var(--primary-light); border: 2px solid #7dd3fc; border-radius: var(--radius-md); padding: 14px; text-align: center; margin-bottom: 18px;">
+            <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--primary);">DAILY OPD TOKEN NUMBER</div>
+            <div id="passTokenNum" style="font-size: 2.8rem; font-weight: 900; color: var(--primary); line-height: 1.1;">#1</div>
+            <div id="passRefCode" style="font-size: 0.82rem; font-weight: 700; color: var(--dark); margin-top: 4px;">REF: MREC-2026-101</div>
+          </div>
+
+          <!-- Patient & Doctor Details Grid -->
+          <div class="ticket-meta-grid">
+            <div>
+              <div class="field-label">Patient Name</div>
+              <div class="field-val" id="passPatientName">John Doe</div>
+            </div>
+            <div>
+              <div class="field-label">Appointment Time</div>
+              <div class="field-val" id="passDateTime">Today &bull; 09:00 AM</div>
+            </div>
+            <div>
+              <div class="field-label">Consulting Doctor</div>
+              <div class="field-val" id="passDoctorName">Dr. Sarah Smith</div>
+            </div>
+            <div>
+              <div class="field-label">Department &amp; Room</div>
+              <div class="field-val" id="passRoom">Cardiology &bull; Room 201</div>
+            </div>
+          </div>
+
+          <!-- Verified Payment Status Strip -->
+          <div class="ticket-payment-strip">
+            <div class="paid-tag">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>PAYMENT: <strong id="passPaymentStatus">PAID (₹850.00)</strong></span>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;" id="passTxnId">
+              TXN: TXN-UPI-2026-101
+            </div>
+          </div>
+
+          <!-- QR Verification Section -->
+          <div class="ticket-qr-section">
+            <div class="ticket-qr-placeholder">
+              <!-- Visual QR code simulation -->
+              <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" fill="white"/>
+                <rect x="10" y="10" width="28" height="28" stroke="#0f172a" stroke-width="4"/>
+                <rect x="18" y="18" width="12" height="12" fill="#0f172a"/>
+                <rect x="62" y="10" width="28" height="28" stroke="#0f172a" stroke-width="4"/>
+                <rect x="70" y="18" width="12" height="12" fill="#0f172a"/>
+                <rect x="10" y="62" width="28" height="28" stroke="#0f172a" stroke-width="4"/>
+                <rect x="18" y="70" width="12" height="12" fill="#0f172a"/>
+                <rect x="46" y="12" width="8" height="8" fill="#0f172a"/>
+                <rect x="46" y="28" width="8" height="8" fill="#0f172a"/>
+                <rect x="46" y="46" width="8" height="8" fill="#0f172a"/>
+                <rect x="62" y="46" width="8" height="8" fill="#0f172a"/>
+                <rect x="78" y="46" width="8" height="8" fill="#0f172a"/>
+                <rect x="12" y="46" width="8" height="8" fill="#0f172a"/>
+                <rect x="28" y="46" width="8" height="8" fill="#0f172a"/>
+                <rect x="46" y="62" width="8" height="8" fill="#0f172a"/>
+                <rect x="62" y="62" width="8" height="8" fill="#0f172a"/>
+                <rect x="78" y="78" width="8" height="8" fill="#0f172a"/>
+              </svg>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">Scan at hospital OPD kiosk / reception desk for contactless check-in</div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close="passModal">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print / Download Pass
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Reschedule Appointment -->
+  <div class="modal-backdrop" id="rescheduleModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Reschedule Appointment</h3>
+        <button class="modal-close-btn" data-close="rescheduleModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="rescheduleForm">
+          <input type="hidden" id="rescheduleApptId">
+          <input type="hidden" id="rescheduleDocId">
+
+          <div class="form-group">
+            <label for="rescheduleDatePicker">Select New Consultation Date</label>
+            <input type="date" id="rescheduleDatePicker" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Select New Time Slot</label>
+            <div class="slots-grid-container" id="rescheduleSlotsGrid">
+              <!-- Populated via JS -->
+            </div>
+            <input type="hidden" id="rescheduleSelectedSlot" required>
+          </div>
+
+          <div class="modal-footer" style="padding-left: 0; padding-right: 0;">
+            <button type="button" class="btn btn-secondary" data-close="rescheduleModal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Confirm Reschedule</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Admin Add Doctor -->
+  <div class="modal-backdrop" id="addDoctorModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Add New Medical Doctor</h3>
+        <button class="modal-close-btn" data-close="addDoctorModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="addDoctorForm">
+          <div class="form-group">
+            <label for="newDocName">Full Doctor Name</label>
+            <input type="text" id="newDocName" class="form-control" placeholder="Dr. First Last" required>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label for="newDocEmail">Email Address</label>
+              <input type="email" id="newDocEmail" class="form-control" placeholder="doctor@mrecw-hospital.com" required>
+            </div>
+            <div class="form-group">
+              <label for="newDocPhone">Phone</label>
+              <input type="text" id="newDocPhone" class="form-control" placeholder="+91 98765 00000">
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label for="newDocDept">Department</label>
+              <select id="newDocDept" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+              <label for="newDocSpec">Specialization</label>
+              <input type="text" id="newDocSpec" class="form-control" placeholder="e.g. Cardiologist" required>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label for="newDocExp">Years of Experience</label>
+              <input type="number" id="newDocExp" class="form-control" value="8">
+            </div>
+            <div class="form-group">
+              <label for="newDocFee">Fee (₹)</label>
+              <input type="number" id="newDocFee" class="form-control" value="600">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="newDocRoom">Room Number</label>
+            <input type="text" id="newDocRoom" class="form-control" value="OPD Room 105">
+          </div>
+          <div class="modal-footer" style="padding-left: 0; padding-right: 0;">
+            <button type="button" class="btn btn-secondary" data-close="addDoctorModal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Doctor Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Admin Add Department -->
+  <div class="modal-backdrop" id="addDeptModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Add Clinical Department</h3>
+        <button class="modal-close-btn" data-close="addDeptModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="addDeptForm">
+          <div class="form-group">
+            <label for="newDeptName">Department Name</label>
+            <input type="text" id="newDeptName" class="form-control" placeholder="e.g. Oncology, ENT, Ophthalmology" required>
+          </div>
+          <div class="form-group">
+            <label for="newDeptHead">Head of Department</label>
+            <input type="text" id="newDeptHead" class="form-control" placeholder="e.g. Dr. John Doe">
+          </div>
+          <div class="form-group">
+            <label for="newDeptDesc">Department Overview</label>
+            <textarea id="newDeptDesc" class="form-control" rows="3" placeholder="Brief clinical scope and specialties..."></textarea>
+          </div>
+          <div class="modal-footer" style="padding-left: 0; padding-right: 0;">
+            <button type="button" class="btn btn-secondary" data-close="addDeptModal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Create Department</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
+
