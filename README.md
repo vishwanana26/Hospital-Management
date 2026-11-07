@@ -139,3 +139,4 @@ The system works **100% out-of-the-box in local offline mode** using its built-i
   - Admins maintain full institutional oversight.
 
 "# Hospital-Appointment" 
+"# Hospital-Management" 
