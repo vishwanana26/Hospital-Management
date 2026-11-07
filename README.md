@@ -138,3 +138,4 @@ The system works **100% out-of-the-box in local offline mode** using its built-i
   - Doctors can only view appointments and patients assigned to them.
   - Admins maintain full institutional oversight.
 
+"# Hospital-Appointment" 
